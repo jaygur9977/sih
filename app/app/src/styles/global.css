@@ -1,0 +1,52 @@
+@import 'tailwindcss';
+
+/* Custom Animations */
+@layer utilities {
+    .perspective-1000 {
+        perspective: 1000px;
+    }
+    
+    .backface-hidden {
+        backface-visibility: hidden;
+    }
+    
+    .transform-style-3d {
+        transform-style: preserve-3d;
+    }
+    
+    .text-gradient {
+        background: linear-gradient(135deg, #00ff88 0%, #00d4ff 50%, #ff2e63 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        background-size: 200% auto;
+    }
+    
+    .bg-gradient-cyber {
+        background: linear-gradient(135deg, #0a0a1f 0%, #1a1a2e 50%, #0a0a1f 100%);
+    }
+    
+    .border-gradient {
+        border: double 2px transparent;
+        border-radius: 12px;
+        background-image: linear-gradient(#0a0a1f, #0a0a1f), 
+                          linear-gradient(135deg, #00ff88, #00d4ff);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+    }
+    
+    .shadow-cyber {
+        box-shadow: 0 10px 40px rgba(0, 255, 136, 0.15),
+                    0 0 20px rgba(0, 255, 136, 0.1);
+    }
+    
+    .hover-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .hover-lift:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 60px rgba(0, 255, 136, 0.25),
+                    0 0 30px rgba(0, 255, 136, 0.15);
+    }
+}

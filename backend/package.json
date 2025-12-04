@@ -1,0 +1,29 @@
+{
+  "name": "shellgpt-deepseek-cli",
+  "version": "1.0.0",
+  "main": "ask.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ask.js"
+  },
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google/genai": "^1.30.0",
+    "axios": "^1.13.2",
+    "dotenv": "^17.2.3",
+    "ip-regex": "^5.0.0",
+    "ipinfo": "^1.5.2",
+    "jsonfile": "^6.2.0",
+    "node-dns-resolver": "^0.0.4",
+    "node-fetch": "^2.7.0",
+    "pdfkit": "^0.17.2",
+    "punycode": "^2.3.1",
+    "shodan-client": "^3.1.5",
+    "tldts": "^7.0.19",
+    "whois-json": "^2.0.4",
+    "xml2js": "^0.6.2"
+  }
+}

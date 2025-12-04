@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CyberGuardian AI | Advanced Security Assistant</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind via CDN with Custom Config -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cyber: {
+                primary: '#00D4AA',
+                secondary: '#2563EB',
+                dark: '#0A1931',
+                darker: '#050F1F',
+                accent: '#FF6B6B',
+              }
+            },
+            fontFamily: {
+              'sans': ['Inter', 'system-ui', 'sans-serif'],
+              'mono': ['Roboto Mono', 'monospace'],
+            },
+            animation: {
+              'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+              'float': 'float 6s ease-in-out infinite',
+              'scan': 'scan 3s linear infinite',
+              'typewriter': 'typewriter 4s steps(40) 1s 1 normal both',
+              'glitch': 'glitch 1s linear infinite',
+              'hacker-text': 'hacker-text 0.5s infinite',
+            },
+            keyframes: {
+              'pulse-glow': {
+                '0%, 100%': { 'box-shadow': '0 0 20px rgba(0, 212, 170, 0.5)' },
+                '50%': { 'box-shadow': '0 0 40px rgba(0, 212, 170, 0.8)' }
+              },
+              'float': {
+                '0%, 100%': { transform: 'translateY(0px)' },
+                '50%': { transform: 'translateY(-20px)' }
+              },
+              'scan': {
+                '0%': { transform: 'translateY(-100%)' },
+                '100%': { transform: 'translateY(100%)' }
+              },
+              'typewriter': {
+                'from': { width: '0' },
+                'to': { width: '100%' }
+              },
+              'glitch': {
+                '0%': { transform: 'translate(0)' },
+                '20%': { transform: 'translate(-2px, 2px)' },
+                '40%': { transform: 'translate(-2px, -2px)' },
+                '60%': { transform: 'translate(2px, 2px)' },
+                '80%': { transform: 'translate(2px, -2px)' },
+                '100%': { transform: 'translate(0)' }
+              },
+              'hacker-text': {
+                '0%': { opacity: '0.1' },
+                '50%': { opacity: '1' },
+                '100%': { opacity: '0.1' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+    
+    <style>
+      /* Custom Global Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        background: #050F1F;
+        color: white;
+        font-family: 'Inter', sans-serif;
+        overflow-x: hidden;
+      }
+      
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0A1931;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #00D4AA;
+        border-radius: 5px;
+      }
+      
+      /* Cyber Grid Background */
+      .cyber-grid {
+        background-image: 
+          linear-gradient(rgba(0, 212, 170, 0.1) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 212, 170, 0.1) 1px, transparent 1px);
+        background-size: 50px 50px;
+      }
+      
+      /* Glowing Effects */
+      .glow-text {
+        text-shadow: 0 0 10px rgba(0, 212, 170, 0.8),
+                     0 0 20px rgba(0, 212, 170, 0.5),
+                     0 0 30px rgba(0, 212, 170, 0.3);
+      }
+      
+      .cyber-border {
+        border: 1px solid rgba(0, 212, 170, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .cyber-border::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #00D4AA, transparent);
+        animation: scan 3s linear infinite;
+      }
+      
+      .tool-card {
+        background: rgba(10, 25, 49, 0.8);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(0, 212, 170, 0.2);
+        transition: all 0.3s ease;
+      }
+      
+      .tool-card:hover {
+        transform: translateY(-10px);
+        border-color: #00D4AA;
+        box-shadow: 0 10px 30px rgba(0, 212, 170, 0.3);
+      }
+      
+      .price-card {
+        background: linear-gradient(145deg, #0A1931, #050F1F);
+        border: 1px solid rgba(0, 212, 170, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .price-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: conic-gradient(
+          transparent,
+          rgba(0, 212, 170, 0.1),
+          transparent 30%
+        );
+        animation: rotate 4s linear infinite;
+      }
+      
+      @keyframes rotate {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      
+      .hacker-text {
+        font-family: 'Roboto Mono', monospace;
+        color: #00D4AA;
+        animation: hacker-text 0.5s infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
