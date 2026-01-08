@@ -1,33 +1,41 @@
-// import React from 'react'
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-// import LandingPage from './pages/LandingPage'
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// function App() {
-//   return (
-//     <Router>
-//       <Routes>
-//         <Route path="/" element={<LandingPage />} />
-//         <Route path="/dashboard" element={<div>Dashboard Coming Soon</div>} />
-//       </Routes>
-//     </Router>
-//   )
-// }
+// IMPORT YOUR PAGES
+import LandingPage from "./pages/LandingPage";
+import QuickScan from "./pages/QuickScan";
+import ScanPage from "./pages/ScanPage";
+import Layout from "./components/Layout";
+import Attack from "./pages/attack"
 
-// export default App
+// DUMMY Pages (अगर तुमने नहीं बनाए हैं तो ये चलेंगे)
+const Dashboard = () => <div className="text-white">Dashboard Coming Soon...</div>;
+const Analysis = () => <div className="text-white">Analysis Coming Soon...</div>;
+const Chat = () => <div className="text-white">AI Assistant Coming Soon...</div>;
 
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import LandingPage from './pages/LandingPage'
-
-function App() {
+export default function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/dashboard" element={<div>Dashboard Coming Soon</div>} />
-      </Routes>
-    </Router>
-  )
-}
 
-export default App
+        {/* Landing Page / Home */}
+        <Route path="/" element={<LandingPage />} />
+
+        {/* Quick Scan */}
+        <Route path="/quick-scan" element={<QuickScan />} />
+
+        {/* Multi-step Scan Page */}
+        <Route path="/scan" element={<ScanPage />} />
+         <Route path="/atack" element={<Attack />} />
+
+        {/* Dashboard Layout (Header + Navigation + Outlet) */}
+        <Route path="/" element={<Layout />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/analysis" element={<Analysis />} />
+          <Route path="/chat" element={<Chat />} />
+        </Route>
+
+      </Routes>
+    </BrowserRouter>
+  );
+}

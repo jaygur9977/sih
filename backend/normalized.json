@@ -1,0 +1,305 @@
+{
+  "scan_summary": {
+    "scan_id": "9d94866c-3265-4e2e-8b27-ba835a8c262a",
+    "scan_start": "2025-12-08T22:23:56Z",
+    "scan_end": "2025-12-09T00:20:48Z",
+    "scanner": "Greenbone Vulnerability Manager v22.7",
+    "targets": [
+      {
+        "ip": "127.0.0.1",
+        "hostname": "demo.testfire.net",
+        "description": "test"
+      },
+      {
+        "hostname": "google.com",
+        "ip": "142.250.183.206"
+      }
+    ],
+    "scan_duration_minutes": 116
+  },
+  
+  "hosts": [
+    {
+      "ip": "127.0.0.1",
+      "hostname": "demo.testfire.net",
+      "open_ports": ["443/tcp", "80/tcp", "8080/tcp"],
+      "operating_system": null,
+      "applications": [
+        {
+          "name": "Transport Layer Security",
+          "version": ["1.0", "1.1", "1.2"],
+          "cpe": "cpe:/a:ietf:transport_layer_security"
+        }
+      ],
+      
+      "vulnerabilities": {
+        "total": 27,
+        "by_severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 3,
+          "low": 1
+        },
+        "details": [
+          {
+            "id": "4ea8eed4-d007-4c9a-80e7-8b81537d86ae",
+            "name": "SSL/TLS: Deprecated TLSv1.0 and TLSv1.1 Protocol Detection",
+            "severity": 4.3,
+            "threat": "Medium",
+            "port": "443/tcp",
+            "description": "Detected usage of deprecated TLSv1.0 and/or TLSv1.1 protocols",
+            "cves": ["CVE-2011-3389", "CVE-2015-0204", "CVE-2023-41928", "CVE-2024-41270", "CVE-2025-3200"],
+            "solution": "Disable TLSv1.0 and TLSv1.1 protocols in favor of TLSv1.2+",
+            "detected_protocols": ["TLSv1.0", "TLSv1.1", "TLSv1.2"]
+          },
+          {
+            "id": "68d3d7fb-4547-43f3-b79d-869e54df58b9",
+            "name": "SSL/TLS: Diffie-Hellman Key Exchange Insufficient DH Group Strength Vulnerability",
+            "severity": 4.0,
+            "threat": "Medium",
+            "port": "443/tcp",
+            "description": "SSL/TLS service uses Diffie-Hellman groups with insufficient strength (key size < 2048)",
+            "solution": "Deploy ECDHE or use 2048-bit or stronger Diffie-Hellman group"
+          },
+          {
+            "id": "e80195a5-179c-4552-b74a-98da36e6dd0a",
+            "name": "SSL/TLS: Diffie-Hellman Key Exchange Insufficient DH Group Strength Vulnerability",
+            "severity": 4.0,
+            "threat": "Medium",
+            "port": "443/tcp",
+            "description": "SSL/TLS service uses Diffie-Hellman groups with insufficient strength",
+            "solution": "Deploy ECDHE or use 2048-bit or stronger Diffie-Hellman group"
+          },
+          {
+            "id": "c090dd76-3afc-4e24-a150-bf58cc336e96",
+            "name": "TCP Timestamps Information Disclosure",
+            "severity": 2.6,
+            "threat": "Low",
+            "port": "general/tcp",
+            "description": "Remote host implements TCP timestamps allowing uptime computation",
+            "solution": "Disable TCP timestamps in system configuration"
+          }
+        ]
+      },
+      
+      "tls_certificates": [
+        {
+          "subject": "CN=demo.testfire.net",
+          "issuer": "CN=Sectigo RSA Domain Validation Secure Server CA, O=Sectigo Limited, L=Salford, ST=Greater Manchester, C=GB",
+          "valid_from": "2025-05-21T00:00:00Z",
+          "valid_to": "2026-06-21T23:59:59Z",
+          "sha256_fingerprint": "B0EAC225501DB594A9639F9E718BC036759B9F492C7C729A60C8473568393382",
+          "serial": "0850B6E8F99775EBC97689EB83FB716D"
+        }
+      ],
+      
+      "scan_errors": [
+        {
+          "description": "NVT timed out after 1200 seconds",
+          "test": "Directory Scanner (HTTP)"
+        },
+        {
+          "description": "NVT timed out after 320 seconds",
+          "test": "Apache Struts Detection (HTTP)"
+        }
+      ]
+    },
+    
+    {
+      "ip": "142.250.183.206",
+      "hostname": "google.com",
+      "open_ports": ["80/tcp", "443/tcp"],
+      "services": {
+        "80/tcp": {
+          "service": "gws (Google Web Server)",
+          "banner": "HTTP/1.0 200 OK",
+          "headers": {
+            "server": "gws",
+            "x_frame_options": "SAMEORIGIN",
+            "x_xss_protection": "0",
+            "content_security_policy": "object-src 'none';base-uri 'self';script-src 'nonce-v5AmAGvuY-fGBiSlFAIHjQ' 'strict-dynamic' 'report-sample' 'unsafe-eval' 'unsafe-inline' https: http:",
+            "p3p": "CP=\"This is not a P3P policy! See g.co/p3phelp for more info.\""
+          }
+        },
+        "443/tcp": {
+          "service": "gws (Google Web Server) with SSL/TLS",
+          "banner": "HTTP/1.0 200 OK",
+          "tls_config": {
+            "supported_versions": ["TLSv1.0", "TLSv1.1", "TLSv1.2", "TLSv1.3"],
+            "deprecated_versions": ["TLSv1.0", "TLSv1.1"],
+            "issuer": "Google Trust Services",
+            "weak_ciphers": ["TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA"]
+          }
+        }
+      },
+      
+      "discoveries": {
+        "dns_records": {
+          "mx": ["10 smtp.google.com."],
+          "txt": [
+            "docusign=05958488-4752-4ef2-95eb-aa7ba8a3bd0e",
+            "google-site-verification=4ibFUgB-wXLQ_S7vsXVomSTVamuOXBiVAzpR5IZ87D0",
+            "v=spf1 include:_spf.google.com ~all",
+            "MS=E4A68B9AB2BB9670BCE15412F62916164C0B20BB"
+          ],
+          "nameservers": ["ns1.google.com", "ns2.google.com", "ns3.google.com", "ns4.google.com"],
+          "spf": "v=spf1 include:_spf.google.com ~all",
+          "dmarc": "v=DMARC1; p=reject; rua=mailto:mailauth-reports@google.com",
+          "caa": "pki.goog"
+        },
+        
+        "web_discoveries": {
+          "security_txt": "https://www.google.com/.well-known/security.txt",
+          "assetlinks": "https://google.com/.well-known/assetlinks.json",
+          "apple_app_site_association": "https://google.com/apple-app-site-association",
+          "rdap_info": {
+            "registration_date": "1997-09-15T04:00:00Z",
+            "expiration_date": "2028-09-14T04:00:00Z",
+            "last_change": "2019-09-09T15:39:04Z",
+            "status": ["server delete prohibited", "server transfer prohibited", "server update prohibited"]
+          },
+          "azure_tenant_id": "0f8cb250-b44f-4acd-b24e-2524ef9f85ac"
+        },
+        
+        "security_issues": {
+          "deprecated_tls": ["TLSv1.0", "TLSv1.1"],
+          "weak_cipher_suites": [
+            {
+              "protocol": "TLSv1.0",
+              "cipher": "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA"
+            },
+            {
+              "protocol": "TLSv1.1",
+              "cipher": "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA"
+            }
+          ],
+          "weak_csp_directive": "script-src 'nonce-m9cj-NLu2ui9Lw9na8tmjw' 'strict-dynamic' 'report-sample' 'unsafe-eval' 'unsafe-inline' https: http:"
+        },
+        
+        "ssl_certificate_info": {
+          "wildcard": true,
+          "subject": "*.google.com",
+          "subject_alternative_names": [
+            "*.android.com",
+            "*.youtube.com",
+            "*.googleapis.cn",
+            "google.com",
+            "youtube.com"
+          ],
+          "issuer": "Google Trust Services"
+        }
+      },
+      
+      "nikto_findings": {
+        "uncommon_headers": [
+          "content-security-policy-report-only",
+          "x-frame-options",
+          "x-xss-protection",
+          "referrer-policy",
+          "cross-origin-resource-policy",
+          "x-content-type-options",
+          "permissions-policy",
+          "cross-origin-opener-policy",
+          "accept-ch"
+        ],
+        "cookies_without_httponly": ["AEC", "NID"],
+        "server_banner_changes": "gws to sffe (possible WAF/load balancer)",
+        "redirects": "Root page redirects to http://www.google.com/"
+      }
+    }
+  ],
+  
+  "risk_assessment": {
+    "overall_risk_level": "Medium",
+    "critical_findings": 0,
+    "high_risk_findings": 0,
+    "medium_risk_findings": 6,
+    "low_risk_findings": 5,
+    
+    "priority_recommendations": [
+      {
+        "priority": "High",
+        "recommendation": "Disable TLSv1.0 and TLSv1.1 on all servers",
+        "affected_hosts": ["127.0.0.1", "google.com"],
+        "impact": "Prevents cryptographic attacks like BEAST and FREAK"
+      },
+      {
+        "priority": "Medium",
+        "recommendation": "Upgrade Diffie-Hellman key exchange to 2048-bit or use ECDHE",
+        "affected_hosts": ["127.0.0.1"],
+        "impact": "Prevents offline decryption of SSL/TLS communications"
+      },
+      {
+        "priority": "Medium",
+        "recommendation": "Disable weak cipher suites on TLS connections",
+        "affected_hosts": ["google.com"],
+        "impact": "Enhances cryptographic strength of TLS connections"
+      },
+      {
+        "priority": "Low",
+        "recommendation": "Disable TCP timestamps to prevent uptime disclosure",
+        "affected_hosts": ["127.0.0.1"],
+        "impact": "Reduces information disclosure about system uptime"
+      }
+    ]
+  },
+  
+  "enriched_data_analysis": {
+    "tls_analysis": {
+      "deprecated_protocols_detected": true,
+      "affected_hosts": ["127.0.0.1", "google.com"],
+      "recommendation": "All servers should be configured to use only TLSv1.2 or higher",
+      "compliance_implications": "May violate PCI DSS, HIPAA, and other security standards"
+    },
+    
+    "certificate_analysis": {
+      "valid_certificates": true,
+      "wildcard_certificates_detected": true,
+      "certificate_expiration": {
+        "demo.testfire.net": "Valid until 2026-06-21",
+        "google.com": "Multiple certificates with wildcard coverage"
+      }
+    },
+    
+    "information_disclosure": {
+      "tcp_timestamps": true,
+      "server_banners": true,
+      "dns_records": true,
+      "directory_listings": "Not detected"
+    },
+    
+    "configuration_analysis": {
+      "security_headers": {
+        "google.com": "Well-configured with CSP, X-Frame-Options, X-XSS-Protection",
+        "demo.testfire.net": "Limited information from scan"
+      },
+      "web_server_config": {
+        "google.com": "Properly configured with security headers",
+        "demo.testfire.net": "TLS configuration needs improvement"
+      }
+    }
+  },
+  
+  "scan_tools_metadata": {
+    "greenbone_scan": {
+      "feed_version": "202512080701",
+      "feed_vendor": "Greenbone AG",
+      "feed_type": "Greenbone Community Feed",
+      "scanner_version": "23.31.5"
+    },
+    "nuclei_scan": {
+      "timestamp": "2025-12-08T22:49:09.335Z",
+      "templates_loaded": 2,
+      "unsigned_templates": 2
+    },
+    "nmap_scan": {
+      "version": "7.94SVN",
+      "service_detection": true
+    },
+    "nikto_scan": {
+      "version": "2.1.5",
+      "items_checked": 6544,
+      "duration_seconds": 886
+    }
+  }
+}

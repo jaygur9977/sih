@@ -1,0 +1,7 @@
+openai
+faiss-cpu
+numpy
+tqdm
+jsonlines
+langchain
+python-dotenv

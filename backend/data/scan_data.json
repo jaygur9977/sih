@@ -1,0 +1,231 @@
+{
+  "metadata": {
+    "report_generated": "2025-12-08T12:05:46Z",
+    "enriched_with": [
+      "Nessus",
+      "OpenVAS",
+      "Nuclei",
+      "Nikto",
+      "Nmap",
+      "NVD_CVE"
+    ],
+    "format_version": "1.1",
+    "description": "Unified vulnerability report integrating multiple scanner outputs, categorized by host, port, severity, and enriched with CVE data."
+  },
+  "target_domain": "testfire.net",
+  "target_ip": "65.61.137.117",
+  "hosts": [
+    {
+      "host": "demo.testfire.net",
+      "ip": "65.61.137.117",
+      "open_ports": [
+        {
+          "port": 80,
+          "service": "Apache Tomcat/Coyote JSP engine 1.1",
+          "protocol": "tcp"
+        },
+        {
+          "port": 443,
+          "service": "ssl/https",
+          "protocol": "tcp"
+        },
+        {
+          "port": 8080,
+          "service": "Apache Tomcat/Coyote JSP engine 1.1",
+          "protocol": "tcp"
+        }
+      ],
+      "vulnerabilities": [
+        {
+          "id": "TLS-OLD-PROTOCOLS",
+          "name": "Deprecated TLS Versions Enabled",
+          "description": "The server supports deprecated TLS versions (TLS 1.0 and/or TLS 1.1).",
+          "severity": "MEDIUM",
+          "cvss_score": 6.5,
+          "port": "443/tcp",
+          "scanners": [
+            "Nessus",
+            "OpenVAS",
+            "Nuclei"
+          ],
+          "cve_list": [
+            "CVE-2011-3389",
+            "CVE-2015-0204",
+            "CVE-2023-41928",
+            "CVE-2024-41270",
+            "CVE-2025-3200"
+          ],
+          "solution": "Disable TLS 1.0 and 1.1. Use TLS 1.2 or higher.",
+          "references": [
+            "https://datatracker.ietf.org/doc/html/rfc8996"
+          ]
+        },
+        {
+          "id": "HSTS-MISSING",
+          "name": "Missing HTTP Strict Transport Security (HSTS) Header",
+          "description": "The HTTPS server does not implement HSTS as per RFC 6797.",
+          "severity": "MEDIUM",
+          "cvss_score": 6.5,
+          "port": "443/tcp",
+          "scanners": [
+            "Nessus",
+            "Nuclei"
+          ],
+          "cve_list": [],
+          "solution": "Add the Strict-Transport-Security header to responses.",
+          "references": [
+            "https://datatracker.ietf.org/doc/html/rfc6797"
+          ]
+        },
+        {
+          "id": "WEAK-DH-GROUP",
+          "name": "Weak Diffie-Hellman Key Exchange (Logjam)",
+          "description": "SSL/TLS uses Diffie-Hellman groups with modulus <= 1024 bits.",
+          "severity": "LOW",
+          "cvss_score": 3.7,
+          "port": "443/tcp",
+          "scanners": [
+            "Nessus",
+            "OpenVAS"
+          ],
+          "cve_list": [],
+          "solution": "Use DH groups with 2048+ bits or enable ECDHE.",
+          "references": [
+            "https://weakdh.org/"
+          ]
+        },
+        {
+          "id": "TCP-TIMESTAMPS",
+          "name": "TCP Timestamps Enabled",
+          "description": "TCP timestamps are enabled, which may allow uptime estimation.",
+          "severity": "LOW",
+          "cvss_score": 2.6,
+          "port": "general/tcp",
+          "scanners": [
+            "OpenVAS",
+            "Nessus"
+          ],
+          "cve_list": [],
+          "solution": "Disable TCP timestamps in system configuration.",
+          "references": []
+        },
+        {
+          "id": "WEAK-CIPHER-SUITE",
+          "name": "Weak Cipher Suites Supported",
+          "description": "Server supports weak cipher suites (e.g., CBC-based in TLS 1.0/1.1).",
+          "severity": "LOW",
+          "cvss_score": null,
+          "port": "443/tcp",
+          "scanners": [
+            "Nuclei"
+          ],
+          "cve_list": [],
+          "solution": "Disable weak cipher suites. Use AES-GCM, ChaCha20, etc.",
+          "references": []
+        },
+        {
+          "id": "MISSING-SECURITY-HEADERS",
+          "name": "Multiple Security Headers Missing",
+          "description": "Missing security headers such as CSP, HSTS, X-Frame-Options, etc.",
+          "severity": "INFO",
+          "cvss_score": null,
+          "port": "80/tcp,443/tcp",
+          "scanners": [
+            "Nikto",
+            "Nuclei"
+          ],
+          "cve_list": [],
+          "solution": "Implement missing security headers.",
+          "references": []
+        },
+        {
+          "id": "HTTP-METHODS-ALLOWED",
+          "name": "Potentially Risky HTTP Methods Allowed",
+          "description": "PUT, DELETE, DEBUG methods are allowed, which could be misused.",
+          "severity": "INFO",
+          "cvss_score": null,
+          "port": "80/tcp",
+          "scanners": [
+            "Nikto"
+          ],
+          "cve_list": [],
+          "solution": "Restrict unnecessary HTTP methods.",
+          "references": [
+            "https://cwe.mitre.org/data/definitions/749.html"
+          ]
+        },
+        {
+          "id": "SSL-CERT-MISMATCH",
+          "name": "SSL Certificate Mismatch",
+          "description": "Certificate issued for demo.testfire.net, but accessed via testfire.net.",
+          "severity": "INFO",
+          "cvss_score": null,
+          "port": "443/tcp",
+          "scanners": [
+            "Nuclei"
+          ],
+          "cve_list": [],
+          "solution": "Use a certificate that matches the accessed domain.",
+          "references": []
+        },
+        {
+          "id": "SWAGGER-EXPOSED",
+          "name": "Swagger API Documentation Exposed",
+          "description": "Swagger UI is accessible at /swagger/index.html.",
+          "severity": "INFO",
+          "cvss_score": null,
+          "port": "80/tcp,443/tcp",
+          "scanners": [
+            "Nuclei"
+          ],
+          "cve_list": [],
+          "solution": "Restrict access to API documentation in production.",
+          "references": []
+        }
+      ],
+      "informational_findings": [
+        {
+          "type": "Service Detection",
+          "details": "Apache Tomcat/Coyote 1.1 detected on ports 80 and 8080."
+        },
+        {
+          "type": "SSL/TLS Information",
+          "details": "TLS 1.2 and 1.3 supported, weak cipher suites present."
+        },
+        {
+          "type": "Certificate Information",
+          "details": "SSL certificate issued by Sectigo, valid until 2026-06-21."
+        },
+        {
+          "type": "Network Information",
+          "details": "Akamai nameservers, DMARC and SPF records present."
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_vulnerabilities": 9,
+    "by_severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 2,
+      "low": 3,
+      "info": 4
+    },
+    "by_scanner": {
+      "Nessus": 4,
+      "OpenVAS": 3,
+      "Nuclei": 6,
+      "Nikto": 2,
+      "Nmap": 0
+    },
+    "recommendations": [
+      "Disable TLS 1.0 and 1.1 on port 443.",
+      "Enable HSTS and other missing security headers.",
+      "Upgrade DH groups to 2048+ bits or use ECDHE.",
+      "Disable weak cipher suites.",
+      "Restrict HTTP methods (PUT, DELETE, DEBUG).",
+      "Ensure SSL certificate matches the domain."
+    ]
+  }
+}

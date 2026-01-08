@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { 
   ShieldCheckIcon, 
   BoltIcon, 
@@ -177,10 +178,12 @@ const LandingPage = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
           >
-            <button className="px-8 py-4 bg-gradient-to-r from-cyber-primary to-cyber-secondary rounded-lg font-bold text-lg hover:scale-105 transition-transform duration-300 flex items-center gap-2 group">
-              Start Free Scan
-              <ArrowRightIcon className="h-5 w-5 group-hover:translate-x-2 transition-transform" />
-            </button>
+           <Link to="/quick-scan">
+  <button className="px-8 py-4 bg-gradient-to-r from-cyber-primary to-cyber-secondary rounded-lg font-bold text-lg hover:scale-105 transition-transform duration-300 flex items-center gap-2 group">
+    Start Free Scan
+    <ArrowRightIcon className="h-5 w-5 group-hover:translate-x-2 transition-transform" />
+  </button>
+</Link>
             <button className="px-8 py-4 bg-transparent border-2 border-cyber-primary rounded-lg font-bold text-lg hover:bg-cyber-primary/10 transition-colors duration-300">
               Watch Demo
             </button>

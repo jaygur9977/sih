@@ -1,0 +1,15 @@
+{
+  "remote code execution": ["T1190"],
+  "rce": ["T1190"],
+  "arbitrary code execution": ["T1190"],
+
+  "sql injection": ["T1190"],
+  "path traversal": ["T1190"],
+
+  "weak password": ["T1110"],
+  "default credentials": ["T1110"],
+
+  "file upload": ["T1105"],
+  "command injection": ["T1059"],
+  "authentication bypass": ["T1539"]
+}
